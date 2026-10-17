@@ -1,6 +1,6 @@
 ADR-0001 — Use Astro for the Public Website
 
-Status: PROPOSED
+Status: APPROVED
 Date: 2026-10-17
 Decision Owner: Product / Architecture Owner
 
@@ -88,6 +88,6 @@ Approval
 
 Current status:
 
-PROPOSED
+APPROVED
 
 Human approval required before changing to:

@@ -46,7 +46,7 @@ Create the minimum approved repository/workspace structure.
 Establish strict TypeScript configuration appropriate to approved applications.
 
 ## BL-003 — Initialize Astro Public Website
-**Status:** PLANNED
+**Status:** READY_FOR_TASK
 
 Create the public Astro application according to ADR-0001.
 
