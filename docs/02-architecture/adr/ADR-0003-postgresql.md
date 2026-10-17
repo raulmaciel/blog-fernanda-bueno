@@ -1,200 +1,116 @@
-ADR-0001 — Use Astro for the Public Website
+ADR-0003-postgresql.md
 
-Status: PROPOSED
+ADR-0003 — Use PostgreSQL as the Primary Database
+
+Status: APPROVED
 Date: 2026-10-17
 Decision Owner: Product / Architecture Owner
 
 Context
 
-The Public Website requires:
+The platform contains strongly related structured data such as:
 
-excellent performance;
+Articles;
 
-strong SEO;
+Authors;
 
-server-rendered HTML;
+Categories;
 
-minimal client-side JavaScript;
+Tags;
 
-content-oriented rendering;
+Users;
 
-selective interactivity.
+Roles;
 
-A full client-side SPA is not required.
+Media metadata;
+
+redirects;
+
+audit information.
+
+The data model requires:
+
+relational integrity;
+
+transactions;
+
+indexing;
+
+reliable migrations;
+
+structured querying.
 
 Decision
 
-Use Astro as the primary framework for the Public Website.
-
-Astro owns reader-facing rendering.
-
-It does not own editorial administration.
+Use PostgreSQL as the primary persistent database.
 
 Rationale
 
-Astro aligns with the project's priorities:
+The domain is primarily relational.
 
-HTML-first rendering;
+PostgreSQL provides:
 
-low default client-side JavaScript;
+strong relational modeling;
 
-server/static rendering options;
+constraints;
 
-component-based development;
+transactions;
 
-good fit for content-heavy websites.
+indexing;
+
+mature operational tooling;
+
+JSON support where selectively useful;
+
+adequate search capability for the initial platform.
 
 Constraints
 
-Implementation SHOULD avoid unnecessary client hydration.
+PostgreSQL is the authoritative structured datastore unless superseded by a future approved ADR.
 
-Interactive islands MAY be introduced only when required by product behavior.
+Do not introduce another primary database for isolated features without demonstrated need.
 
-The public frontend MUST NOT duplicate CMS responsibilities.
+Normal media binary objects MUST remain outside PostgreSQL.
 
 Alternatives Considered
 
-Next.js
+MongoDB
 
-Capable, but provides broader application/runtime capabilities than currently required.
+Rejected because the current domain benefits from relational integrity and structured relationships.
 
-Traditional SPA
+MySQL
 
-Rejected because the public news site does not require client-side application rendering as its primary architecture.
+Technically viable, but PostgreSQL is preferred for the approved architecture and expected data/query capabilities.
 
-WordPress-rendered frontend
+Multiple databases
 
-Rejected because the project intentionally separates public delivery from editorial administration.
+Rejected because no current requirement justifies additional persistence complexity.
 
 Consequences
 
 Positive:
 
-lightweight public pages;
+relational integrity;
 
-strong rendering control;
+transactional behavior;
 
-reduced browser JavaScript;
+mature ecosystem;
 
-clear frontend/CMS separation.
+sufficient initial search capabilities;
+
+reduced infrastructure complexity.
 
 Negative:
 
-team must maintain an explicit CMS-to-frontend integration;
+schema evolution requires disciplined migrations;
 
-some dynamic features may require server rendering or selective hydration.
+database scaling must be monitored if future traffic patterns change substantially.
 
 Approval
 
 Current status:
-
-PROPOSED
-
-Human approval required before changing to:
 
 APPROVED
-
-ADR-0002-payload-cms.md
-
-ADR-0002 — Use Payload CMS for Editorial Administration
-
-Status: PROPOSED
-Date: 2026-10-17
-Decision Owner: Product / Architecture Owner
-
-Context
-
-The platform requires an editorial administration environment supporting:
-
-structured content;
-
-drafts;
-
-versions;
-
-users;
-
-permissions;
-
-publishing;
-
-media management;
-
-scheduling;
-
-extensibility.
-
-Building a complete CMS from scratch would add significant implementation and security cost without providing proportional product value.
-
-Decision
-
-Use Payload CMS as the Editorial CMS.
-
-Payload will own the primary editorial-management domain.
-
-Rationale
-
-Payload fits the project because it provides an application-level CMS while allowing the public frontend to remain independent.
-
-It supports the required direction for:
-
-structured content;
-
-authentication;
-
-access control;
-
-versioned editorial content;
-
-administrative UI;
-
-TypeScript-based customization.
-
-Constraints
-
-Do not rebuild functionality already adequately provided by Payload.
-
-Custom behavior SHOULD be introduced only when required by approved product requirements.
-
-Payload-specific concepts MUST NOT replace canonical domain terminology without reason.
-
-Alternatives Considered
-
-Custom CMS
-
-Rejected because it unnecessarily recreates authentication, editorial UI, versioning and content-management capabilities.
-
-WordPress
-
-Viable, but rejected for the current architecture because the project prioritizes stronger application-level control and separation from the public frontend.
-
-Direct database administration
-
-Rejected because it does not provide an appropriate editorial workflow.
-
-Consequences
-
-Positive:
-
-less custom CMS infrastructure;
-
-structured editorial model;
-
-faster implementation;
-
-existing administrative capabilities.
-
-Negative:
-
-project depends on Payload conventions and lifecycle;
-
-upgrades require compatibility review.
-
-Approval
-
-Current status:
-
-PROPOSED
 
 Human approval required before changing to:
 

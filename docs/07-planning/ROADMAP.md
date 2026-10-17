@@ -44,7 +44,7 @@ Includes:
 - package/workspace structure;
 - TypeScript baseline;
 - Public Website application foundation;
-- CMS application foundation;
+- Payload CMS foundation with the minimum required PostgreSQL integration;
 - local development workflow;
 - baseline validation commands;
 - initial CI foundation.
@@ -63,8 +63,6 @@ Establish approved persistent storage and editorial administration foundations.
 
 Includes:
 
-- PostgreSQL integration;
-- Payload CMS baseline;
 - administrative authentication foundation;
 - role/permission foundation;
 - migration workflow;

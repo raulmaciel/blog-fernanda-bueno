@@ -50,10 +50,10 @@ Establish strict TypeScript configuration appropriate to approved applications.
 
 Create the public Astro application according to ADR-0001.
 
-## BL-004 — Initialize Payload CMS
-**Status:** PLANNED
+## BL-004 — Initialize Payload CMS with PostgreSQL
+**Status:** READY_FOR_TASK
 
-Create the Payload CMS application according to ADR-0002.
+Initialize a minimal functional Payload CMS application with the definitive PostgreSQL adapter according to approved ADR-0002 and ADR-0003. Do not use a temporary database configuration or duplicate PostgreSQL integration in a later item. This item absorbs the former BL-020 scope.
 
 ## BL-005 — Establish local validation commands
 **Status:** PLANNED
@@ -69,10 +69,9 @@ Create a minimal automated validation pipeline after CI tooling is approved.
 
 # EPIC-02 — Persistence and Administration
 
-## BL-020 — Configure PostgreSQL integration
-**Status:** PLANNED
+### Historical reference — BL-020 — Configure PostgreSQL integration
 
-Connect the approved CMS persistence layer to PostgreSQL according to ADR-0003.
+Its scope was absorbed by BL-004 before independent execution. BL-020 is retired; its ID must not be reused.
 
 ## BL-021 — Establish migration workflow
 **Status:** PLANNED
