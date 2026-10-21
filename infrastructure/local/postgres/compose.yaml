@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16.15
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?required}
+      APP_DB: ${APP_DB:?required}
+      APP_USER: ${APP_USER:?required}
+      APP_PASSWORD: ${APP_PASSWORD:?required}
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-app-db.sh:/docker-entrypoint-initdb.d/01-init-app-db.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  postgres_data:

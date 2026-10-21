@@ -1,0 +1,10 @@
+node_modules/
+next-env.d.ts
+.next/
+dist/
+.cache/
+.turbo/
+*.log
+.env
+.env.*
+!.env.example
