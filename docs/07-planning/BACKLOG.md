@@ -36,27 +36,27 @@ It does not mean implementation may begin.
 # EPIC-01 — Repository Foundation
 
 ## BL-001 — Initialize repository workspace
-**Status:** READY_FOR_TASK
+**Status:** DONE
 
 Create the minimum approved repository/workspace structure.
 
 ## BL-002 — Configure TypeScript baseline
-**Status:** READY_FOR_TASK
+**Status:** DONE
 
 Establish strict TypeScript configuration appropriate to approved applications.
 
 ## BL-003 — Initialize Astro Public Website
-**Status:** READY_FOR_TASK
+**Status:** DONE
 
 Create the public Astro application according to ADR-0001.
 
 ## BL-004 — Initialize Payload CMS with PostgreSQL
-**Status:** READY_FOR_TASK
+**Status:** DONE
 
 Initialize a minimal functional Payload CMS application with the definitive PostgreSQL adapter according to approved ADR-0002 and ADR-0003. Do not use a temporary database configuration or duplicate PostgreSQL integration in a later item. This item absorbs the former BL-020 scope.
 
 ## BL-005 — Establish local validation commands
-**Status:** PLANNED
+**Status:** DONE
 
 Provide baseline format, lint, typecheck, test and build commands.
 
