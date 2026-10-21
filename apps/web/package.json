@@ -3,9 +3,14 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build"
+    "build": "astro build",
+    "typecheck": "astro check"
   },
   "dependencies": {
     "astro": "7.4.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.11",
+    "typescript": "5.9.3"
   }
 }

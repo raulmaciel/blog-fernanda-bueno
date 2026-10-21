@@ -1,0 +1,31 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+  "files": {
+    "includes": [
+      "apps/cms/next.config.mjs",
+      "apps/cms/src/**/*.{js,ts,tsx}",
+      "apps/web/src/**/*.{js,ts,tsx}",
+      "!apps/cms/src/app/(payload)/admin/importMap.js",
+      "!!**/node_modules",
+      "!!**/.next",
+      "!!**/dist",
+      "!!**/package-lock.json",
+      "!!**/.env",
+      "!!**/.env.*",
+      "!!**/next-env.d.ts",
+      "!!**/*.generated.{js,ts,tsx}"
+    ]
+  },
+  "formatter": {
+    "enabled": false
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended"
+    }
+  },
+  "assist": {
+    "enabled": false
+  }
+}

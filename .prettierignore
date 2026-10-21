@@ -1,0 +1,15 @@
+node_modules/
+**/node_modules/
+**/.next/
+**/dist/
+**/.astro/
+**/package-lock.json
+**/.env
+**/.env.*
+**/next-env.d.ts
+**/admin/importMap.js
+docs/
+infrastructure/
+tests/
+AGENTS.md
+README.md

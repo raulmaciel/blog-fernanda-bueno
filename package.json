@@ -1,0 +1,18 @@
+{
+  "name": "blog-fernanda-validation",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "format:check": "prettier --check \"package.json\" \"biome.json\" \".prettierrc.json\" \"apps/web/package.json\" \"apps/web/src/pages/index.astro\" \"apps/cms/package.json\" \"apps/cms/src/payload.config.ts\" \"apps/cms/src/app/(payload)/layout.tsx\" \"apps/cms/src/app/(payload)/admin/[[...segments]]/not-found.tsx\" \"apps/cms/src/app/(payload)/admin/[[...segments]]/page.tsx\" \"apps/cms/src/app/(payload)/api/[...slug]/route.ts\" \"apps/cms/src/app/(payload)/custom.scss\"",
+    "format": "prettier --write \"package.json\" \"biome.json\" \".prettierrc.json\" \"apps/web/package.json\" \"apps/web/src/pages/index.astro\" \"apps/cms/package.json\" \"apps/cms/src/payload.config.ts\" \"apps/cms/src/app/(payload)/layout.tsx\" \"apps/cms/src/app/(payload)/admin/[[...segments]]/not-found.tsx\" \"apps/cms/src/app/(payload)/admin/[[...segments]]/page.tsx\" \"apps/cms/src/app/(payload)/api/[...slug]/route.ts\" \"apps/cms/src/app/(payload)/custom.scss\"",
+    "lint": "biome lint .",
+    "typecheck": "npm --prefix apps/web run typecheck && npm --prefix apps/cms run typecheck",
+    "test": "node --test",
+    "build": "npm --prefix apps/web run build && npm --prefix apps/cms run build"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "prettier": "3.9.10",
+    "prettier-plugin-astro": "1.1.1"
+  }
+}
