@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.19.0
+      - name: Install root dependencies
+        run: npm ci
+      - name: Install web dependencies
+        run: npm ci
+        working-directory: apps/web
+      - name: Install CMS dependencies
+        run: npm ci
+        working-directory: apps/cms
+      - name: Configure disposable CMS environment
+        shell: bash
+        run: |
+          database_password="$(openssl rand -hex 24)"
+          payload_secret="$(openssl rand -hex 32)"
+          database_url="postgresql://ci_probe:${database_password}@127.0.0.1:65432/ci_probe"
+          echo "::add-mask::$database_password"
+          echo "::add-mask::$payload_secret"
+          echo "::add-mask::$database_url"
+          {
+            printf 'DATABASE_URL=%s\n' "$database_url"
+            printf 'PAYLOAD_SECRET=%s\n' "$payload_secret"
+          } >> "$GITHUB_ENV"
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run test
+      - run: npm run build
+      - run: git diff --exit-code
